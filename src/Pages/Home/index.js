@@ -1,23 +1,23 @@
-import React from "react";
+import React, {useContext} from "react";
 import {View, Text, Button} from 'react-native';
 import { useNavigation } from "@react-navigation/core";
 
+import { AuthContext } from "../../contexts/auth";
+
 export default function Home(){
-    const navigation = useNavigation();
 
-
-    function irSobbre(){
-        navigation.navigate('Sobre', {nome: 'Leonardo', email: 'leonardo@gmail.com'});
-    }
+    const {user, signOut} = useContext(AuthContext);
 
     return(
         <View>
             <Text> Tela de home </Text>
-            <Text> ola ola ola  </Text>
-            <Button 
-            title= "Ir para Sobre"
-            onPress={irSobbre}
+            <Text>{user && user.nome}</Text>
+            <Text>{user && user.email}</Text>
+            <Button
+                title = "Sair da Conta"
+                onPress={ () => signOut()}
             />
+            
         </View>
     );
 }
