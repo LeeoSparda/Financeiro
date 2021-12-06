@@ -13,7 +13,7 @@ export default function Profile() {
 
  return (
    <Container>
-     <Header/>
+      <Header/>
        <Nome>
          {user && user.nome}
        </Nome>
